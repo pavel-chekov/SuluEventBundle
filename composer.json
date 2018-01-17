@@ -1,0 +1,35 @@
+{
+    "name": "chekov/sulu-event-bundle",
+    "description": "A sulu bundle which provides event and event registration.",
+    "type": "sulu-bundle",
+    "require": {
+        "sulu/sulu": "~1.5",
+        "symfony/symfony": "^2.8.7 || ^3.0",
+        "doctrine/orm": "^2.5.3",
+        "php": "^5.5 || ^7.0"
+    },
+    "require-dev": {
+        "jackalope/jackalope-doctrine-dbal": "^1.2.5",
+        "symfony/monolog-bundle": "^2.8.7 || ^3.0",
+        "massive/search-bundle": "@dev",
+        "zendframework/zend-stdlib": "~2.3",
+        "zendframework/zendsearch": "@dev",
+        "doctrine/doctrine-bundle": "^1.4",
+        "phpunit/phpunit": ">=4.8, <6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chekov\\Bundle\\EventBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Schranz",
+            "email": "alexander.schranz@massiveart.com"
+        }
+    ]
+}
