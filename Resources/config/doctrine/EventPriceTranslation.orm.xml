@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Chekov\Bundle\EventBundle\Repository\EventPriceTranslationRepository"
+            name="Chekov\Bundle\EventBundle\Entity\EventPriceTranslation"
+            table="ev_event_price_translation">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="title" type="string" column="title" length="255"/>
+        <field name="locale" type="string" column="locale" length="5"/>
+        <field name="content" type="json_array" column="content" nullable="true"/>
+
+        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\EventPrice" field="price" inversed-by="translations">
+            <join-column column-definition="event_price_id" on-delete="CASCADE" nullable="false"/>
+        </many-to-one>
+    </entity>
+</doctrine-mapping>

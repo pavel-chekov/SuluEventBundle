@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Chekov\Bundle\EventBundle\Repository\PlanRepository"
+            name="Chekov\Bundle\EventBundle\Entity\Plan"
+            table="ev_plan">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="scale" type="float" column="scale"/>
+
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDate" mapped-by="plan" field="eventDates"/>
+
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\PlanTranslation" mapped-by="plan" field="translations">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\PlanItem" mapped-by="plan" field="items">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </one-to-many>
+    </entity>
+</doctrine-mapping>

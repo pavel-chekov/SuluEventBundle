@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity repository-class="Chekov\Bundle\EventBundle\Repository\EventDateRepository"
+            name="Chekov\Bundle\EventBundle\Entity\EventDate"
+            table="ev_event_date">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="start" type="datetime" column="start"/>
+        <field name="end" type="datetime" column="end"/>
+
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDateTranslations" mapped-by="date" field="translations">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDateMember" mapped-by="date" field="members">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </one-to-many>
+
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDateReseveration" mapped-by="date" field="reservations">
+            <cascade>
+                <cascade-persist />
+            </cascade>
+        </one-to-many>
+
+        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\Plan" field="plan" inversed-by="eventDates">
+            <join-column column-definition="plan_id" on-delete="SET NULL" />
+        </many-to-one>
+
+        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\Event" field="event" inversed-by="dates">
+            <join-column column-definition="event_id" on-delete="CASCADE" nullable="false" />
+        </many-to-one>
+    </entity>
+</doctrine-mapping>
