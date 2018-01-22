@@ -1,5 +1,5 @@
 {
-    "name": "chekov/sulu-event-bundle",
+    "name": "chekov/event-bundle",
     "description": "A sulu bundle which provides event and event registration.",
     "type": "sulu-bundle",
     "require": {
