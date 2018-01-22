@@ -8,25 +8,30 @@ namespace Chekov\Bundle\EventBundle\Entity;
 class PlanTranslation
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $title;
 
+    /**
+     * @var string
+     */
+    private $locale;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @var array
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $content;
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var \Chekov\Bundle\EventBundle\Entity\Plan
+     */
+    private $plan;
+
 
     /**
      * Set title
@@ -50,6 +55,88 @@ class PlanTranslation
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return PlanTranslation
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
+    }
+
+    /**
+     * Set content
+     *
+     * @param array $content
+     *
+     * @return PlanTranslation
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return array
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set plan
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\Plan $plan
+     *
+     * @return PlanTranslation
+     */
+    public function setPlan(\Chekov\Bundle\EventBundle\Entity\Plan $plan)
+    {
+        $this->plan = $plan;
+
+        return $this;
+    }
+
+    /**
+     * Get plan
+     *
+     * @return \Chekov\Bundle\EventBundle\Entity\Plan
+     */
+    public function getPlan()
+    {
+        return $this->plan;
     }
 }
 

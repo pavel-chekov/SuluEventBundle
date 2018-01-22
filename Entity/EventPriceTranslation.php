@@ -8,14 +8,14 @@ namespace Chekov\Bundle\EventBundle\Entity;
 class EventPriceTranslation
 {
     /**
-     * @var int
+     * @var string
      */
-    private $id;
+    private $title;
 
     /**
      * @var string
      */
-    private $title;
+    private $locale;
 
     /**
      * @var array
@@ -23,20 +23,15 @@ class EventPriceTranslation
     private $content;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $locale;
-
+    private $id;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @var \Chekov\Bundle\EventBundle\Entity\EventPrice
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $price;
+
 
     /**
      * Set title
@@ -60,6 +55,30 @@ class EventPriceTranslation
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return EventPriceTranslation
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 
     /**
@@ -87,27 +106,37 @@ class EventPriceTranslation
     }
 
     /**
-     * Set locale
+     * Get id
      *
-     * @param string $locale
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set price
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\EventPrice $price
      *
      * @return EventPriceTranslation
      */
-    public function setLocale($locale)
+    public function setPrice(\Chekov\Bundle\EventBundle\Entity\EventPrice $price)
     {
-        $this->locale = $locale;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get locale
+     * Get price
      *
-     * @return string
+     * @return \Chekov\Bundle\EventBundle\Entity\EventPrice
      */
-    public function getLocale()
+    public function getPrice()
     {
-        return $this->locale;
+        return $this->price;
     }
 }
 

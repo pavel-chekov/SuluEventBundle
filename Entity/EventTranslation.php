@@ -8,11 +8,6 @@ namespace Chekov\Bundle\EventBundle\Entity;
 class EventTranslation
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $title;
@@ -20,23 +15,23 @@ class EventTranslation
     /**
      * @var string
      */
+    private $locale;
+
+    /**
+     * @var array
+     */
     private $content;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $locale;
-
+    private $id;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @var \Chekov\Bundle\EventBundle\Entity\Event
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $event;
+
 
     /**
      * Set title
@@ -63,30 +58,6 @@ class EventTranslation
     }
 
     /**
-     * Set content
-     *
-     * @param string $content
-     *
-     * @return EventTranslation
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    /**
-     * Get content
-     *
-     * @return string
-     */
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    /**
      * Set locale
      *
      * @param string $locale
@@ -108,6 +79,64 @@ class EventTranslation
     public function getLocale()
     {
         return $this->locale;
+    }
+
+    /**
+     * Set content
+     *
+     * @param array $content
+     *
+     * @return EventTranslation
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * Get content
+     *
+     * @return array
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set event
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\Event $event
+     *
+     * @return EventTranslation
+     */
+    public function setEvent(\Chekov\Bundle\EventBundle\Entity\Event $event)
+    {
+        $this->event = $event;
+
+        return $this;
+    }
+
+    /**
+     * Get event
+     *
+     * @return \Chekov\Bundle\EventBundle\Entity\Event
+     */
+    public function getEvent()
+    {
+        return $this->event;
     }
 }
 

@@ -8,9 +8,14 @@ namespace Chekov\Bundle\EventBundle\Entity;
 class EventDateTranslation
 {
     /**
-     * @var int
+     * @var string
      */
-    private $id;
+    private $title;
+
+    /**
+     * @var string
+     */
+    private $locale;
 
     /**
      * @var array
@@ -18,19 +23,62 @@ class EventDateTranslation
     private $content;
 
     /**
-     * @var string
+     * @var integer
      */
-    private $locale;
+    private $id;
+
+    /**
+     * @var \Chekov\Bundle\EventBundle\Entity\EventDate
+     */
+    private $date;
 
 
     /**
-     * Get id
+     * Set title
      *
-     * @return int
+     * @param string $title
+     *
+     * @return EventDateTranslation
      */
-    public function getId()
+    public function setTitle($title)
     {
-        return $this->id;
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set locale
+     *
+     * @param string $locale
+     *
+     * @return EventDateTranslation
+     */
+    public function setLocale($locale)
+    {
+        $this->locale = $locale;
+
+        return $this;
+    }
+
+    /**
+     * Get locale
+     *
+     * @return string
+     */
+    public function getLocale()
+    {
+        return $this->locale;
     }
 
     /**
@@ -58,27 +106,37 @@ class EventDateTranslation
     }
 
     /**
-     * Set locale
+     * Get id
      *
-     * @param string $locale
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $date
      *
      * @return EventDateTranslation
      */
-    public function setLocale($locale)
+    public function setDate(\Chekov\Bundle\EventBundle\Entity\EventDate $date)
     {
-        $this->locale = $locale;
+        $this->date = $date;
 
         return $this;
     }
 
     /**
-     * Get locale
+     * Get date
      *
-     * @return string
+     * @return \Chekov\Bundle\EventBundle\Entity\EventDate
      */
-    public function getLocale()
+    public function getDate()
     {
-        return $this->locale;
+        return $this->date;
     }
 }
 

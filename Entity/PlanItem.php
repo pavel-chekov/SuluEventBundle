@@ -8,11 +8,6 @@ namespace Chekov\Bundle\EventBundle\Entity;
 class PlanItem
 {
     /**
-     * @var int
-     */
-    private $id;
-
-    /**
      * @var string
      */
     private $name;
@@ -32,15 +27,27 @@ class PlanItem
      */
     private $type;
 
+    /**
+     * @var integer
+     */
+    private $id;
 
     /**
-     * Get id
-     *
-     * @return int
+     * @var \Doctrine\Common\Collections\Collection
      */
-    public function getId()
+    private $eventDateReservations;
+
+    /**
+     * @var \Chekov\Bundle\EventBundle\Entity\Plan
+     */
+    private $plan;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        return $this->id;
+        $this->eventDateReservations = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -137,6 +144,74 @@ class PlanItem
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Add eventDateReservation
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation
+     *
+     * @return PlanItem
+     */
+    public function addEventDateReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation)
+    {
+        $this->eventDateReservations[] = $eventDateReservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove eventDateReservation
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation
+     */
+    public function removeEventDateReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation)
+    {
+        $this->eventDateReservations->removeElement($eventDateReservation);
+    }
+
+    /**
+     * Get eventDateReservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getEventDateReservations()
+    {
+        return $this->eventDateReservations;
+    }
+
+    /**
+     * Set plan
+     *
+     * @param \Chekov\Bundle\EventBundle\Entity\Plan $plan
+     *
+     * @return PlanItem
+     */
+    public function setPlan(\Chekov\Bundle\EventBundle\Entity\Plan $plan)
+    {
+        $this->plan = $plan;
+
+        return $this;
+    }
+
+    /**
+     * Get plan
+     *
+     * @return \Chekov\Bundle\EventBundle\Entity\Plan
+     */
+    public function getPlan()
+    {
+        return $this->plan;
     }
 }
 
