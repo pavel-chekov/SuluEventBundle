@@ -2,6 +2,8 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Sulu\Bundle\ContactBundle\Entity\Account;
+
 /**
  * EventDateReservation
  */
@@ -13,22 +15,22 @@ class EventDateReservation
     private $id;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventDateMember
+     * @var EventDateMember
      */
     private $member;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventDate
+     * @var EventDate
      */
     private $date;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\PlanItem
+     * @var PlanItem
      */
     private $planItem;
 
     /**
-     * @var \Sulu\Bundle\ContactBundle\Entity\Account
+     * @var Account
      */
     private $account;
 
@@ -46,11 +48,11 @@ class EventDateReservation
     /**
      * Set member
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateMember $member
+     * @param EventDateMember $member
      *
      * @return EventDateReservation
      */
-    public function setMember(\Chekov\Bundle\EventBundle\Entity\EventDateMember $member = null)
+    public function setMember(EventDateMember $member = null)
     {
         $this->member = $member;
 
@@ -60,7 +62,7 @@ class EventDateReservation
     /**
      * Get member
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventDateMember
+     * @return EventDateMember
      */
     public function getMember()
     {
@@ -70,11 +72,11 @@ class EventDateReservation
     /**
      * Set date
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $date
+     * @param EventDate $date
      *
      * @return EventDateReservation
      */
-    public function setDate(\Chekov\Bundle\EventBundle\Entity\EventDate $date = null)
+    public function setDate(EventDate $date = null)
     {
         $this->date = $date;
 
@@ -84,7 +86,7 @@ class EventDateReservation
     /**
      * Get date
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventDate
+     * @return EventDate
      */
     public function getDate()
     {
@@ -94,11 +96,11 @@ class EventDateReservation
     /**
      * Set planItem
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\PlanItem $planItem
+     * @param PlanItem $planItem
      *
      * @return EventDateReservation
      */
-    public function setPlanItem(\Chekov\Bundle\EventBundle\Entity\PlanItem $planItem = null)
+    public function setPlanItem(PlanItem $planItem = null)
     {
         $this->planItem = $planItem;
 
@@ -108,7 +110,7 @@ class EventDateReservation
     /**
      * Get planItem
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\PlanItem
+     * @return PlanItem
      */
     public function getPlanItem()
     {
@@ -118,11 +120,11 @@ class EventDateReservation
     /**
      * Set account
      *
-     * @param \Sulu\Bundle\ContactBundle\Entity\Account $account
+     * @param Account $account
      *
      * @return EventDateReservation
      */
-    public function setAccount(\Sulu\Bundle\ContactBundle\Entity\Account $account = null)
+    public function setAccount(Account $account = null)
     {
         $this->account = $account;
 
@@ -132,11 +134,10 @@ class EventDateReservation
     /**
      * Get account
      *
-     * @return \Sulu\Bundle\ContactBundle\Entity\Account
+     * @return Account
      */
     public function getAccount()
     {
         return $this->account;
     }
 }
-

@@ -2,6 +2,9 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * EventDate
  */
@@ -23,27 +26,27 @@ class EventDate
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventDateTranslation[]
      */
     private $translations;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventDateMember[]
      */
     private $members;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventDateReservation[]
      */
     private $reservations;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\Plan
+     * @var Plan
      */
     private $plan;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\Event
+     * @var Event
      */
     private $event;
 
@@ -52,9 +55,9 @@ class EventDate
      */
     public function __construct()
     {
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->members = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->members = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
     }
 
     /**
@@ -118,11 +121,11 @@ class EventDate
     /**
      * Add translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateTranslations $translation
+     * @param EventDateTranslation $translation
      *
      * @return EventDate
      */
-    public function addTranslation(\Chekov\Bundle\EventBundle\Entity\EventDateTranslations $translation)
+    public function addTranslation(EventDateTranslation $translation)
     {
         $this->translations[] = $translation;
 
@@ -132,9 +135,9 @@ class EventDate
     /**
      * Remove translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateTranslations $translation
+     * @param EventDateTranslation $translation
      */
-    public function removeTranslation(\Chekov\Bundle\EventBundle\Entity\EventDateTranslations $translation)
+    public function removeTranslation(EventDateTranslation $translation)
     {
         $this->translations->removeElement($translation);
     }
@@ -142,7 +145,7 @@ class EventDate
     /**
      * Get translations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventDateTranslation[]
      */
     public function getTranslations()
     {
@@ -152,11 +155,11 @@ class EventDate
     /**
      * Add member
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateMember $member
+     * @param EventDateMember $member
      *
      * @return EventDate
      */
-    public function addMember(\Chekov\Bundle\EventBundle\Entity\EventDateMember $member)
+    public function addMember(EventDateMember $member)
     {
         $this->members[] = $member;
 
@@ -166,9 +169,9 @@ class EventDate
     /**
      * Remove member
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateMember $member
+     * @param EventDateMember $member
      */
-    public function removeMember(\Chekov\Bundle\EventBundle\Entity\EventDateMember $member)
+    public function removeMember(EventDateMember $member)
     {
         $this->members->removeElement($member);
     }
@@ -176,7 +179,7 @@ class EventDate
     /**
      * Get members
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventDateMember[]
      */
     public function getMembers()
     {
@@ -186,11 +189,11 @@ class EventDate
     /**
      * Add reservation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReseveration $reservation
+     * @param EventDateReservation $reservation
      *
      * @return EventDate
      */
-    public function addReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReseveration $reservation)
+    public function addReservation(EventDateReservation $reservation)
     {
         $this->reservations[] = $reservation;
 
@@ -200,9 +203,9 @@ class EventDate
     /**
      * Remove reservation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReseveration $reservation
+     * @param EventDateReservation $reservation
      */
-    public function removeReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReseveration $reservation)
+    public function removeReservation(EventDateReservation $reservation)
     {
         $this->reservations->removeElement($reservation);
     }
@@ -210,7 +213,7 @@ class EventDate
     /**
      * Get reservations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventDateReservation[]
      */
     public function getReservations()
     {
@@ -220,11 +223,11 @@ class EventDate
     /**
      * Set plan
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\Plan $plan
+     * @param Plan $plan
      *
      * @return EventDate
      */
-    public function setPlan(\Chekov\Bundle\EventBundle\Entity\Plan $plan = null)
+    public function setPlan(Plan $plan = null)
     {
         $this->plan = $plan;
 
@@ -234,7 +237,7 @@ class EventDate
     /**
      * Get plan
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\Plan
+     * @return Plan
      */
     public function getPlan()
     {
@@ -244,11 +247,11 @@ class EventDate
     /**
      * Set event
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\Event $event
+     * @param Event $event
      *
      * @return EventDate
      */
-    public function setEvent(\Chekov\Bundle\EventBundle\Entity\Event $event)
+    public function setEvent(Event $event)
     {
         $this->event = $event;
 
@@ -258,11 +261,10 @@ class EventDate
     /**
      * Get event
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\Event
+     * @return Event
      */
     public function getEvent()
     {
         return $this->event;
     }
 }
-

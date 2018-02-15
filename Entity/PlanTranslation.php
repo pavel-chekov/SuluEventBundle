@@ -28,7 +28,7 @@ class PlanTranslation
     private $id;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\Plan
+     * @var Plan
      */
     private $plan;
 
@@ -118,11 +118,11 @@ class PlanTranslation
     /**
      * Set plan
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\Plan $plan
+     * @param Plan $plan
      *
      * @return PlanTranslation
      */
-    public function setPlan(\Chekov\Bundle\EventBundle\Entity\Plan $plan)
+    public function setPlan(Plan $plan)
     {
         $this->plan = $plan;
 
@@ -132,11 +132,10 @@ class PlanTranslation
     /**
      * Get plan
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\Plan
+     * @return Plan
      */
     public function getPlan()
     {
         return $this->plan;
     }
 }
-

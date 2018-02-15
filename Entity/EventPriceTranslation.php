@@ -28,7 +28,7 @@ class EventPriceTranslation
     private $id;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventPrice
+     * @var EventPrice
      */
     private $price;
 
@@ -118,11 +118,11 @@ class EventPriceTranslation
     /**
      * Set price
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventPrice $price
+     * @param EventPrice $price
      *
      * @return EventPriceTranslation
      */
-    public function setPrice(\Chekov\Bundle\EventBundle\Entity\EventPrice $price)
+    public function setPrice(EventPrice $price)
     {
         $this->price = $price;
 
@@ -132,11 +132,10 @@ class EventPriceTranslation
     /**
      * Get price
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventPrice
+     * @return EventPrice
      */
     public function getPrice()
     {
         return $this->price;
     }
 }
-

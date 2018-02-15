@@ -28,7 +28,7 @@ class EventTranslation
     private $id;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\Event
+     * @var Event
      */
     private $event;
 
@@ -118,11 +118,11 @@ class EventTranslation
     /**
      * Set event
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\Event $event
+     * @param Event $event
      *
      * @return EventTranslation
      */
-    public function setEvent(\Chekov\Bundle\EventBundle\Entity\Event $event)
+    public function setEvent(Event $event)
     {
         $this->event = $event;
 
@@ -132,11 +132,10 @@ class EventTranslation
     /**
      * Get event
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\Event
+     * @return Event
      */
     public function getEvent()
     {
         return $this->event;
     }
 }
-

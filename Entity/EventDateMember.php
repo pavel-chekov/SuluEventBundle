@@ -2,6 +2,9 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Sulu\Bundle\ContactBundle\Entity\Account;
+use Sulu\Bundle\ContactBundle\Entity\Contact;
+
 /**
  * EventDateMember
  */
@@ -23,27 +26,27 @@ class EventDateMember
     private $id;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventDateReservation
+     * @var EventDateReservation
      */
     private $reservation;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventDate
+     * @var EventDate
      */
     private $date;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventPrice
+     * @var EventPrice
      */
     private $price;
 
     /**
-     * @var \Sulu\Bundle\ContactBundle\Entity\Contact
+     * @var Contact
      */
     private $contact;
 
     /**
-     * @var \Sulu\Bundle\ContactBundle\Entity\Account
+     * @var Account
      */
     private $account;
 
@@ -109,11 +112,11 @@ class EventDateMember
     /**
      * Set reservation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReservation $reservation
+     * @param EventDateReservation $reservation
      *
      * @return EventDateMember
      */
-    public function setReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReservation $reservation = null)
+    public function setReservation(EventDateReservation $reservation = null)
     {
         $this->reservation = $reservation;
 
@@ -123,7 +126,7 @@ class EventDateMember
     /**
      * Get reservation
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventDateReservation
+     * @return EventDateReservation
      */
     public function getReservation()
     {
@@ -133,11 +136,11 @@ class EventDateMember
     /**
      * Set date
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $date
+     * @param EventDate $date
      *
      * @return EventDateMember
      */
-    public function setDate(\Chekov\Bundle\EventBundle\Entity\EventDate $date = null)
+    public function setDate(EventDate $date = null)
     {
         $this->date = $date;
 
@@ -147,7 +150,7 @@ class EventDateMember
     /**
      * Get date
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventDate
+     * @return EventDate
      */
     public function getDate()
     {
@@ -157,11 +160,11 @@ class EventDateMember
     /**
      * Set price
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventPrice $price
+     * @param EventPrice $price
      *
      * @return EventDateMember
      */
-    public function setPrice(\Chekov\Bundle\EventBundle\Entity\EventPrice $price = null)
+    public function setPrice(EventPrice $price = null)
     {
         $this->price = $price;
 
@@ -171,7 +174,7 @@ class EventDateMember
     /**
      * Get price
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventPrice
+     * @return EventPrice
      */
     public function getPrice()
     {
@@ -181,11 +184,11 @@ class EventDateMember
     /**
      * Set contact
      *
-     * @param \Sulu\Bundle\ContactBundle\Entity\Contact $contact
+     * @param Contact $contact
      *
      * @return EventDateMember
      */
-    public function setContact(\Sulu\Bundle\ContactBundle\Entity\Contact $contact = null)
+    public function setContact(Contact $contact = null)
     {
         $this->contact = $contact;
 
@@ -195,7 +198,7 @@ class EventDateMember
     /**
      * Get contact
      *
-     * @return \Sulu\Bundle\ContactBundle\Entity\Contact
+     * @return Contact
      */
     public function getContact()
     {
@@ -205,11 +208,11 @@ class EventDateMember
     /**
      * Set account
      *
-     * @param \Sulu\Bundle\ContactBundle\Entity\Account $account
+     * @param Account $account
      *
      * @return EventDateMember
      */
-    public function setAccount(\Sulu\Bundle\ContactBundle\Entity\Account $account = null)
+    public function setAccount(Account $account = null)
     {
         $this->account = $account;
 
@@ -219,11 +222,10 @@ class EventDateMember
     /**
      * Get account
      *
-     * @return \Sulu\Bundle\ContactBundle\Entity\Account
+     * @return Account
      */
     public function getAccount()
     {
         return $this->account;
     }
 }
-

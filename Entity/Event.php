@@ -2,6 +2,9 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Event
  */
@@ -13,17 +16,17 @@ class Event
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventTranslation[]
      */
     private $translations;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventDate[]
      */
     private $dates;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventPrice[]
      */
     private $prices;
 
@@ -32,9 +35,9 @@ class Event
      */
     public function __construct()
     {
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->dates = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->prices = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->dates = new ArrayCollection();
+        $this->prices = new ArrayCollection();
     }
 
     /**
@@ -50,11 +53,11 @@ class Event
     /**
      * Add translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventTranslation $translation
+     * @param EventTranslation $translation
      *
      * @return Event
      */
-    public function addTranslation(\Chekov\Bundle\EventBundle\Entity\EventTranslation $translation)
+    public function addTranslation(EventTranslation $translation)
     {
         $this->translations[] = $translation;
 
@@ -64,9 +67,9 @@ class Event
     /**
      * Remove translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventTranslation $translation
+     * @param EventTranslation $translation
      */
-    public function removeTranslation(\Chekov\Bundle\EventBundle\Entity\EventTranslation $translation)
+    public function removeTranslation(EventTranslation $translation)
     {
         $this->translations->removeElement($translation);
     }
@@ -74,7 +77,7 @@ class Event
     /**
      * Get translations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventTranslation[]
      */
     public function getTranslations()
     {
@@ -84,11 +87,11 @@ class Event
     /**
      * Add date
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $date
+     * @param EventDate $date
      *
      * @return Event
      */
-    public function addDate(\Chekov\Bundle\EventBundle\Entity\EventDate $date)
+    public function addDate(EventDate $date)
     {
         $this->dates[] = $date;
 
@@ -98,9 +101,9 @@ class Event
     /**
      * Remove date
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $date
+     * @param EventDate $date
      */
-    public function removeDate(\Chekov\Bundle\EventBundle\Entity\EventDate $date)
+    public function removeDate(EventDate $date)
     {
         $this->dates->removeElement($date);
     }
@@ -108,7 +111,7 @@ class Event
     /**
      * Get dates
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventDate[]
      */
     public function getDates()
     {
@@ -118,11 +121,11 @@ class Event
     /**
      * Add price
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventPrice $price
+     * @param EventPrice $price
      *
      * @return Event
      */
-    public function addPrice(\Chekov\Bundle\EventBundle\Entity\EventPrice $price)
+    public function addPrice(EventPrice $price)
     {
         $this->prices[] = $price;
 
@@ -132,9 +135,9 @@ class Event
     /**
      * Remove price
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventPrice $price
+     * @param EventPrice $price
      */
-    public function removePrice(\Chekov\Bundle\EventBundle\Entity\EventPrice $price)
+    public function removePrice(EventPrice $price)
     {
         $this->prices->removeElement($price);
     }
@@ -142,11 +145,10 @@ class Event
     /**
      * Get prices
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventPrice[]
      */
     public function getPrices()
     {
         return $this->prices;
     }
 }
-

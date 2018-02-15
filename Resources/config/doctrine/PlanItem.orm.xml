@@ -14,10 +14,10 @@
         <field name="y" type="float" column="y"/>
         <field name="type" type="string" column="type" length="255"/>
 
-        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDateReserveration" mapped-by="planItem" field="eventDateReservations"/>
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDateReservation" mapped-by="planItem" field="eventDateReservations"/>
 
         <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\Plan" field="plan" inversed-by="items">
-            <join-column column-definition="plan_id" on-delete="CASCADE" nullable="false"/>
+            <join-column name="plan_id" on-delete="CASCADE" nullable="false"/>
         </many-to-one>
     </entity>
 </doctrine-mapping>

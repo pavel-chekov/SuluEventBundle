@@ -2,6 +2,9 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * Plan
  */
@@ -18,17 +21,17 @@ class Plan
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventDate[]
      */
     private $eventDates;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventTranslation[]
      */
     private $translations;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|PlanItem[]
      */
     private $items;
 
@@ -37,9 +40,9 @@ class Plan
      */
     public function __construct()
     {
-        $this->eventDates = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->items = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventDates = new ArrayCollection();
+        $this->translations = new ArrayCollection();
+        $this->items = new ArrayCollection();
     }
 
     /**
@@ -79,11 +82,11 @@ class Plan
     /**
      * Add eventDate
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $eventDate
+     * @param EventDate $eventDate
      *
      * @return Plan
      */
-    public function addEventDate(\Chekov\Bundle\EventBundle\Entity\EventDate $eventDate)
+    public function addEventDate(EventDate $eventDate)
     {
         $this->eventDates[] = $eventDate;
 
@@ -93,9 +96,9 @@ class Plan
     /**
      * Remove eventDate
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $eventDate
+     * @param EventDate $eventDate
      */
-    public function removeEventDate(\Chekov\Bundle\EventBundle\Entity\EventDate $eventDate)
+    public function removeEventDate(EventDate $eventDate)
     {
         $this->eventDates->removeElement($eventDate);
     }
@@ -103,7 +106,7 @@ class Plan
     /**
      * Get eventDates
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventDate[]
      */
     public function getEventDates()
     {
@@ -113,11 +116,11 @@ class Plan
     /**
      * Add translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\PlanTranslation $translation
+     * @param PlanTranslation $translation
      *
      * @return Plan
      */
-    public function addTranslation(\Chekov\Bundle\EventBundle\Entity\PlanTranslation $translation)
+    public function addTranslation(PlanTranslation $translation)
     {
         $this->translations[] = $translation;
 
@@ -127,9 +130,9 @@ class Plan
     /**
      * Remove translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\PlanTranslation $translation
+     * @param PlanTranslation $translation
      */
-    public function removeTranslation(\Chekov\Bundle\EventBundle\Entity\PlanTranslation $translation)
+    public function removeTranslation(PlanTranslation $translation)
     {
         $this->translations->removeElement($translation);
     }
@@ -137,7 +140,7 @@ class Plan
     /**
      * Get translations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventTranslation[]
      */
     public function getTranslations()
     {
@@ -147,11 +150,11 @@ class Plan
     /**
      * Add item
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\PlanItem $item
+     * @param PlanItem $item
      *
      * @return Plan
      */
-    public function addItem(\Chekov\Bundle\EventBundle\Entity\PlanItem $item)
+    public function addItem(PlanItem $item)
     {
         $this->items[] = $item;
 
@@ -161,9 +164,9 @@ class Plan
     /**
      * Remove item
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\PlanItem $item
+     * @param PlanItem $item
      */
-    public function removeItem(\Chekov\Bundle\EventBundle\Entity\PlanItem $item)
+    public function removeItem(PlanItem $item)
     {
         $this->items->removeElement($item);
     }
@@ -171,11 +174,10 @@ class Plan
     /**
      * Get items
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|PlanItem[]
      */
     public function getItems()
     {
         return $this->items;
     }
 }
-

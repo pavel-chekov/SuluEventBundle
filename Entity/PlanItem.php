@@ -2,6 +2,9 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * PlanItem
  */
@@ -33,12 +36,12 @@ class PlanItem
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventDateReservation[]
      */
     private $eventDateReservations;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\Plan
+     * @var Plan
      */
     private $plan;
 
@@ -47,7 +50,7 @@ class PlanItem
      */
     public function __construct()
     {
-        $this->eventDateReservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->eventDateReservations = new ArrayCollection();
     }
 
     /**
@@ -159,11 +162,11 @@ class PlanItem
     /**
      * Add eventDateReservation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation
+     * @param EventDateReservation $eventDateReservation
      *
      * @return PlanItem
      */
-    public function addEventDateReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation)
+    public function addEventDateReservation(EventDateReservation $eventDateReservation)
     {
         $this->eventDateReservations[] = $eventDateReservation;
 
@@ -173,9 +176,9 @@ class PlanItem
     /**
      * Remove eventDateReservation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation
+     * @param EventDateReservation $eventDateReservation
      */
-    public function removeEventDateReservation(\Chekov\Bundle\EventBundle\Entity\EventDateReserveration $eventDateReservation)
+    public function removeEventDateReservation(EventDateReservation $eventDateReservation)
     {
         $this->eventDateReservations->removeElement($eventDateReservation);
     }
@@ -183,7 +186,7 @@ class PlanItem
     /**
      * Get eventDateReservations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventDateReservation[]
      */
     public function getEventDateReservations()
     {
@@ -193,11 +196,11 @@ class PlanItem
     /**
      * Set plan
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\Plan $plan
+     * @param Plan $plan
      *
      * @return PlanItem
      */
-    public function setPlan(\Chekov\Bundle\EventBundle\Entity\Plan $plan)
+    public function setPlan(Plan $plan)
     {
         $this->plan = $plan;
 
@@ -207,11 +210,10 @@ class PlanItem
     /**
      * Get plan
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\Plan
+     * @return Plan
      */
     public function getPlan()
     {
         return $this->plan;
     }
 }
-

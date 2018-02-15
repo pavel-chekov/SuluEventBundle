@@ -2,6 +2,9 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+
 /**
  * EventPrice
  */
@@ -23,12 +26,12 @@ class EventPrice
     private $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var Collection|EventPriceTranslation[]
      */
     private $translations;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\Event
+     * @var Event
      */
     private $event;
 
@@ -37,7 +40,7 @@ class EventPrice
      */
     public function __construct()
     {
-        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->translations = new ArrayCollection();
     }
 
     /**
@@ -101,11 +104,11 @@ class EventPrice
     /**
      * Add translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventPriceTranslations $translation
+     * @param EventPriceTranslation $translation
      *
      * @return EventPrice
      */
-    public function addTranslation(\Chekov\Bundle\EventBundle\Entity\EventPriceTranslations $translation)
+    public function addTranslation(EventPriceTranslation $translation)
     {
         $this->translations[] = $translation;
 
@@ -115,9 +118,9 @@ class EventPrice
     /**
      * Remove translation
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventPriceTranslations $translation
+     * @param EventPriceTranslation $translation
      */
-    public function removeTranslation(\Chekov\Bundle\EventBundle\Entity\EventPriceTranslations $translation)
+    public function removeTranslation(EventPriceTranslation $translation)
     {
         $this->translations->removeElement($translation);
     }
@@ -125,7 +128,7 @@ class EventPrice
     /**
      * Get translations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return Collection|EventPriceTranslation[]
      */
     public function getTranslations()
     {
@@ -135,11 +138,11 @@ class EventPrice
     /**
      * Set event
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\Event $event
+     * @param Event $event
      *
      * @return EventPrice
      */
-    public function setEvent(\Chekov\Bundle\EventBundle\Entity\Event $event)
+    public function setEvent(Event $event)
     {
         $this->event = $event;
 
@@ -149,11 +152,10 @@ class EventPrice
     /**
      * Get event
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\Event
+     * @return Event
      */
     public function getEvent()
     {
         return $this->event;
     }
 }
-

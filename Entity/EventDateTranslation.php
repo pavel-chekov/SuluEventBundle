@@ -28,7 +28,7 @@ class EventDateTranslation
     private $id;
 
     /**
-     * @var \Chekov\Bundle\EventBundle\Entity\EventDate
+     * @var EventDate
      */
     private $date;
 
@@ -118,11 +118,11 @@ class EventDateTranslation
     /**
      * Set date
      *
-     * @param \Chekov\Bundle\EventBundle\Entity\EventDate $date
+     * @param EventDate $date
      *
      * @return EventDateTranslation
      */
-    public function setDate(\Chekov\Bundle\EventBundle\Entity\EventDate $date)
+    public function setDate(EventDate $date)
     {
         $this->date = $date;
 
@@ -132,11 +132,10 @@ class EventDateTranslation
     /**
      * Get date
      *
-     * @return \Chekov\Bundle\EventBundle\Entity\EventDate
+     * @return EventDate
      */
     public function getDate()
     {
         return $this->date;
     }
 }
-

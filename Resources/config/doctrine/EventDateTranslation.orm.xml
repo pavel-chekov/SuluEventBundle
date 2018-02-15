@@ -14,7 +14,7 @@
         <field name="content" type="json_array" column="content" nullable="true"/>
 
         <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\EventDate" field="date" inversed-by="translations">
-            <join-column column-definition="event_date_id" on-delete="CASCADE" nullable="false"/>
+            <join-column name="event_date_id" on-delete="CASCADE" nullable="false"/>
         </many-to-one>
     </entity>
 </doctrine-mapping>
