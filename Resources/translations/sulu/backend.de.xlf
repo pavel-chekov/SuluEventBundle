@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+        <body>
+            <!-- Basic -->
+            <trans-unit id="1">
+                <source>navigation.events</source>
+                <target>Veranstaltungen</target>
+            </trans-unit>
+
+            <!-- Events -->
+            <trans-unit id="10">
+                <source>chekov_event.events</source>
+                <target>Veranstaltungen</target>
+            </trans-unit>
+
+            <trans-unit id="11">
+                <source>chekov_event.event</source>
+                <target>Veranstaltung</target>
+            </trans-unit>
+
+            <!-- Events -->
+            <trans-unit id="20">
+                <source>chekov_event.plans</source>
+                <target>Pläne</target>
+            </trans-unit>
+
+            <trans-unit id="21">
+                <source>chekov_event.plan</source>
+                <target>Plan</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

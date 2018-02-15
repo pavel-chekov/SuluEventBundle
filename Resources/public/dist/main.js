@@ -1,0 +1,1 @@
+require.config({paths:{chekovevent:"../../chekovevent/dist",chekoveventcss:"../../chekovevent/css"}}),define(["css!chekoveventcss/main"],function(){return{name:"ChekovEventBundle",initialize:function(a){"use strict";a.sandbox;a.components.addSource("chekovform","/bundles/chekovform/js/components")}}});
