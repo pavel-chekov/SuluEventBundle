@@ -11,8 +11,10 @@
 
 namespace Chekov\Bundle\EventBundle\Repository;
 
-use Sulu\Component\Persistence\Repository\ORM\EntityRepository;
+use Doctrine\Common\Persistence\ObjectRepository;
+use Doctrine\Common\Collections\Selectable;
+use Sulu\Component\Persistence\Repository\RepositoryInterface;
 
-class PlanItemRepository extends EntityRepository implements PlanItemRepositoryInterface
+interface EventDateTranslationRepositoryInterface extends ObjectRepository, Selectable, RepositoryInterface
 {
 }

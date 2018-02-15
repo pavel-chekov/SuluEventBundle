@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * This file is part of ChekovEventBundle package.
+ *
+ * (c) Chekov Bundles <https://github.com/pavel-chekov>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-/**
- * PlanItem
- */
-class PlanItem
+class PlanItem implements PlanItemInterface
 {
     /**
      * @var string
@@ -36,12 +42,12 @@ class PlanItem
     private $id;
 
     /**
-     * @var Collection|EventDateReservation[]
+     * @var Collection|EventDateReservationInterface[]
      */
     private $eventDateReservations;
 
     /**
-     * @var Plan
+     * @var PlanInterface
      */
     private $plan;
 
@@ -53,13 +59,6 @@ class PlanItem
         $this->eventDateReservations = new ArrayCollection();
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return PlanItem
-     */
     public function setName($name)
     {
         $this->name = $name;
@@ -67,23 +66,11 @@ class PlanItem
         return $this;
     }
 
-    /**
-     * Get name
-     *
-     * @return string
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * Set x
-     *
-     * @param float $x
-     *
-     * @return PlanItem
-     */
     public function setX($x)
     {
         $this->x = $x;
@@ -91,23 +78,11 @@ class PlanItem
         return $this;
     }
 
-    /**
-     * Get x
-     *
-     * @return float
-     */
     public function getX()
     {
         return $this->x;
     }
 
-    /**
-     * Set y
-     *
-     * @param float $y
-     *
-     * @return PlanItem
-     */
     public function setY($y)
     {
         $this->y = $y;
@@ -115,23 +90,11 @@ class PlanItem
         return $this;
     }
 
-    /**
-     * Get y
-     *
-     * @return float
-     */
     public function getY()
     {
         return $this->y;
     }
 
-    /**
-     * Set type
-     *
-     * @param string $type
-     *
-     * @return PlanItem
-     */
     public function setType($type)
     {
         $this->type = $type;
@@ -139,79 +102,42 @@ class PlanItem
         return $this;
     }
 
-    /**
-     * Get type
-     *
-     * @return string
-     */
     public function getType()
     {
         return $this->type;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Add eventDateReservation
-     *
-     * @param EventDateReservation $eventDateReservation
-     *
-     * @return PlanItem
-     */
-    public function addEventDateReservation(EventDateReservation $eventDateReservation)
+    public function addEventDateReservation(EventDateReservationInterface $eventDateReservation)
     {
         $this->eventDateReservations[] = $eventDateReservation;
 
         return $this;
     }
 
-    /**
-     * Remove eventDateReservation
-     *
-     * @param EventDateReservation $eventDateReservation
-     */
-    public function removeEventDateReservation(EventDateReservation $eventDateReservation)
+    public function removeEventDateReservation(EventDateReservationInterface $eventDateReservation)
     {
         $this->eventDateReservations->removeElement($eventDateReservation);
+
+        return $this;
     }
 
-    /**
-     * Get eventDateReservations
-     *
-     * @return Collection|EventDateReservation[]
-     */
     public function getEventDateReservations()
     {
         return $this->eventDateReservations;
     }
 
-    /**
-     * Set plan
-     *
-     * @param Plan $plan
-     *
-     * @return PlanItem
-     */
-    public function setPlan(Plan $plan)
+    public function setPlan(PlanInterface $plan)
     {
         $this->plan = $plan;
 
         return $this;
     }
 
-    /**
-     * Get plan
-     *
-     * @return Plan
-     */
     public function getPlan()
     {
         return $this->plan;

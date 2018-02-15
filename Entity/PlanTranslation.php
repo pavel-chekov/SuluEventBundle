@@ -1,11 +1,17 @@
 <?php
 
+/*
+ * This file is part of ChekovEventBundle package.
+ *
+ * (c) Chekov Bundles <https://github.com/pavel-chekov>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Chekov\Bundle\EventBundle\Entity;
 
-/**
- * PlanTranslation
- */
-class PlanTranslation
+class PlanTranslation implements PlanTranslationInterface
 {
     /**
      * @var string
@@ -28,18 +34,10 @@ class PlanTranslation
     private $id;
 
     /**
-     * @var Plan
+     * @var PlanInterface
      */
     private $plan;
 
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return PlanTranslation
-     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -47,23 +45,11 @@ class PlanTranslation
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     *
-     * @return PlanTranslation
-     */
     public function setLocale($locale)
     {
         $this->locale = $locale;
@@ -71,23 +57,11 @@ class PlanTranslation
         return $this;
     }
 
-    /**
-     * Get locale
-     *
-     * @return string
-     */
     public function getLocale()
     {
         return $this->locale;
     }
 
-    /**
-     * Set content
-     *
-     * @param array $content
-     *
-     * @return PlanTranslation
-     */
     public function setContent($content)
     {
         $this->content = $content;
@@ -95,45 +69,23 @@ class PlanTranslation
         return $this;
     }
 
-    /**
-     * Get content
-     *
-     * @return array
-     */
     public function getContent()
     {
         return $this->content;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set plan
-     *
-     * @param Plan $plan
-     *
-     * @return PlanTranslation
-     */
-    public function setPlan(Plan $plan)
+    public function setPlan(PlanInterface $plan)
     {
         $this->plan = $plan;
 
         return $this;
     }
 
-    /**
-     * Get plan
-     *
-     * @return Plan
-     */
     public function getPlan()
     {
         return $this->plan;

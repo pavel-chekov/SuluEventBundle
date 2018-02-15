@@ -1,11 +1,17 @@
 <?php
 
+/*
+ * This file is part of ChekovEventBundle package.
+ *
+ * (c) Chekov Bundles <https://github.com/pavel-chekov>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Chekov\Bundle\EventBundle\Entity;
 
-/**
- * EventDateTranslation
- */
-class EventDateTranslation
+class EventDateTranslation implements EventDateTranslationInterface
 {
     /**
      * @var string
@@ -28,18 +34,10 @@ class EventDateTranslation
     private $id;
 
     /**
-     * @var EventDate
+     * @var EventDateInterface
      */
     private $date;
 
-
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return EventDateTranslation
-     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -47,23 +45,11 @@ class EventDateTranslation
         return $this;
     }
 
-    /**
-     * Get title
-     *
-     * @return string
-     */
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     *
-     * @return EventDateTranslation
-     */
     public function setLocale($locale)
     {
         $this->locale = $locale;
@@ -71,23 +57,11 @@ class EventDateTranslation
         return $this;
     }
 
-    /**
-     * Get locale
-     *
-     * @return string
-     */
     public function getLocale()
     {
         return $this->locale;
     }
 
-    /**
-     * Set content
-     *
-     * @param array $content
-     *
-     * @return EventDateTranslation
-     */
     public function setContent($content)
     {
         $this->content = $content;
@@ -95,45 +69,23 @@ class EventDateTranslation
         return $this;
     }
 
-    /**
-     * Get content
-     *
-     * @return array
-     */
     public function getContent()
     {
         return $this->content;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Set date
-     *
-     * @param EventDate $date
-     *
-     * @return EventDateTranslation
-     */
-    public function setDate(EventDate $date)
+    public function setDate(EventDateInterface $date)
     {
         $this->date = $date;
 
         return $this;
     }
 
-    /**
-     * Get date
-     *
-     * @return EventDate
-     */
     public function getDate()
     {
         return $this->date;

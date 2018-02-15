@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * This file is part of ChekovEventBundle package.
+ *
+ * (c) Chekov Bundles <https://github.com/pavel-chekov>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-/**
- * EventDate
- */
-class EventDate
+class EventDate implements EventDateInterface
 {
     /**
      * @var \DateTime
@@ -26,27 +32,27 @@ class EventDate
     private $id;
 
     /**
-     * @var Collection|EventDateTranslation[]
+     * @var Collection|EventDateTranslationInterface[]
      */
     private $translations;
 
     /**
-     * @var Collection|EventDateMember[]
+     * @var Collection|EventDateMemberInterface[]
      */
     private $members;
 
     /**
-     * @var Collection|EventDateReservation[]
+     * @var Collection|EventDateReservationInterface[]
      */
     private $reservations;
 
     /**
-     * @var Plan
+     * @var PlanInterface
      */
     private $plan;
 
     /**
-     * @var Event
+     * @var EventInterface
      */
     private $event;
 
@@ -60,209 +66,111 @@ class EventDate
         $this->reservations = new ArrayCollection();
     }
 
-    /**
-     * Set start
-     *
-     * @param \DateTime $start
-     *
-     * @return EventDate
-     */
-    public function setStart($start)
+    public function setStart(\DateTime $start = null)
     {
         $this->start = $start;
 
         return $this;
     }
 
-    /**
-     * Get start
-     *
-     * @return \DateTime
-     */
     public function getStart()
     {
         return $this->start;
     }
 
-    /**
-     * Set end
-     *
-     * @param \DateTime $end
-     *
-     * @return EventDate
-     */
-    public function setEnd($end)
+    public function setEnd(\DateTime $end = null)
     {
         $this->end = $end;
 
         return $this;
     }
 
-    /**
-     * Get end
-     *
-     * @return \DateTime
-     */
     public function getEnd()
     {
         return $this->end;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Add translation
-     *
-     * @param EventDateTranslation $translation
-     *
-     * @return EventDate
-     */
-    public function addTranslation(EventDateTranslation $translation)
+    public function addTranslation(EventDateTranslationInterface $translation)
     {
         $this->translations[] = $translation;
 
         return $this;
     }
 
-    /**
-     * Remove translation
-     *
-     * @param EventDateTranslation $translation
-     */
-    public function removeTranslation(EventDateTranslation $translation)
+    public function removeTranslation(EventDateTranslationInterface $translation)
     {
         $this->translations->removeElement($translation);
+
+        return $this;
     }
 
-    /**
-     * Get translations
-     *
-     * @return Collection|EventDateTranslation[]
-     */
     public function getTranslations()
     {
         return $this->translations;
     }
 
-    /**
-     * Add member
-     *
-     * @param EventDateMember $member
-     *
-     * @return EventDate
-     */
-    public function addMember(EventDateMember $member)
+    public function addMember(EventDateMemberInterface $member)
     {
         $this->members[] = $member;
 
         return $this;
     }
 
-    /**
-     * Remove member
-     *
-     * @param EventDateMember $member
-     */
-    public function removeMember(EventDateMember $member)
+    public function removeMember(EventDateMemberInterface $member)
     {
         $this->members->removeElement($member);
+
+        return $this;
     }
 
-    /**
-     * Get members
-     *
-     * @return Collection|EventDateMember[]
-     */
     public function getMembers()
     {
         return $this->members;
     }
 
-    /**
-     * Add reservation
-     *
-     * @param EventDateReservation $reservation
-     *
-     * @return EventDate
-     */
-    public function addReservation(EventDateReservation $reservation)
+    public function addReservation(EventDateReservationInterface $reservation)
     {
         $this->reservations[] = $reservation;
 
         return $this;
     }
 
-    /**
-     * Remove reservation
-     *
-     * @param EventDateReservation $reservation
-     */
-    public function removeReservation(EventDateReservation $reservation)
+    public function removeReservation(EventDateReservationInterface $reservation)
     {
         $this->reservations->removeElement($reservation);
+
+        return $this;
     }
 
-    /**
-     * Get reservations
-     *
-     * @return Collection|EventDateReservation[]
-     */
     public function getReservations()
     {
         return $this->reservations;
     }
 
-    /**
-     * Set plan
-     *
-     * @param Plan $plan
-     *
-     * @return EventDate
-     */
-    public function setPlan(Plan $plan = null)
+    public function setPlan(PlanInterface $plan = null)
     {
         $this->plan = $plan;
 
         return $this;
     }
 
-    /**
-     * Get plan
-     *
-     * @return Plan
-     */
     public function getPlan()
     {
         return $this->plan;
     }
 
-    /**
-     * Set event
-     *
-     * @param Event $event
-     *
-     * @return EventDate
-     */
-    public function setEvent(Event $event)
+    public function setEvent(EventInterface $event)
     {
         $this->event = $event;
 
         return $this;
     }
 
-    /**
-     * Get event
-     *
-     * @return Event
-     */
     public function getEvent()
     {
         return $this->event;

@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * This file is part of ChekovEventBundle package.
+ *
+ * (c) Chekov Bundles <https://github.com/pavel-chekov>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-/**
- * Plan
- */
-class Plan
+class Plan implements PlanInterface
 {
     /**
      * @var float
@@ -21,17 +27,17 @@ class Plan
     private $id;
 
     /**
-     * @var Collection|EventDate[]
+     * @var Collection|EventDateInterface[]
      */
     private $eventDates;
 
     /**
-     * @var Collection|EventTranslation[]
+     * @var Collection|EventTranslationInterface[]
      */
     private $translations;
 
     /**
-     * @var Collection|PlanItem[]
+     * @var Collection|PlanItemInterface[]
      */
     private $items;
 
@@ -45,13 +51,6 @@ class Plan
         $this->items = new ArrayCollection();
     }
 
-    /**
-     * Set scale
-     *
-     * @param float $scale
-     *
-     * @return Plan
-     */
     public function setScale($scale)
     {
         $this->scale = $scale;
@@ -59,123 +58,68 @@ class Plan
         return $this;
     }
 
-    /**
-     * Get scale
-     *
-     * @return float
-     */
     public function getScale()
     {
         return $this->scale;
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Add eventDate
-     *
-     * @param EventDate $eventDate
-     *
-     * @return Plan
-     */
-    public function addEventDate(EventDate $eventDate)
+    public function addEventDate(EventDateInterface $eventDate)
     {
         $this->eventDates[] = $eventDate;
 
         return $this;
     }
 
-    /**
-     * Remove eventDate
-     *
-     * @param EventDate $eventDate
-     */
-    public function removeEventDate(EventDate $eventDate)
+    public function removeEventDate(EventDateInterface $eventDate)
     {
         $this->eventDates->removeElement($eventDate);
+
+        return $this;
     }
 
-    /**
-     * Get eventDates
-     *
-     * @return Collection|EventDate[]
-     */
     public function getEventDates()
     {
         return $this->eventDates;
     }
 
-    /**
-     * Add translation
-     *
-     * @param PlanTranslation $translation
-     *
-     * @return Plan
-     */
-    public function addTranslation(PlanTranslation $translation)
+    public function addTranslation(PlanTranslationInterface $translation)
     {
         $this->translations[] = $translation;
 
         return $this;
     }
 
-    /**
-     * Remove translation
-     *
-     * @param PlanTranslation $translation
-     */
-    public function removeTranslation(PlanTranslation $translation)
+    public function removeTranslation(PlanTranslationInterface $translation)
     {
         $this->translations->removeElement($translation);
+
+        return $this;
     }
 
-    /**
-     * Get translations
-     *
-     * @return Collection|EventTranslation[]
-     */
     public function getTranslations()
     {
         return $this->translations;
     }
 
-    /**
-     * Add item
-     *
-     * @param PlanItem $item
-     *
-     * @return Plan
-     */
-    public function addItem(PlanItem $item)
+    public function addItem(PlanItemInterface $item)
     {
         $this->items[] = $item;
 
         return $this;
     }
 
-    /**
-     * Remove item
-     *
-     * @param PlanItem $item
-     */
-    public function removeItem(PlanItem $item)
+    public function removeItem(PlanItemInterface $item)
     {
         $this->items->removeElement($item);
+
+        return $this;
     }
 
-    /**
-     * Get items
-     *
-     * @return Collection|PlanItem[]
-     */
     public function getItems()
     {
         return $this->items;

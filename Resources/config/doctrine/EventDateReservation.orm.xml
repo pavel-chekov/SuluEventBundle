@@ -2,20 +2,20 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity repository-class="Chekov\Bundle\EventBundle\Repository\EventDateReservationRepository"
+    <mapped-superclass repository-class="Chekov\Bundle\EventBundle\Repository\EventDateReservationRepositoryInterface"
             name="Chekov\Bundle\EventBundle\Entity\EventDateReservation"
             table="ev_event_date_reservation">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
 
-        <one-to-one field="member" target-entity="Chekov\Bundle\EventBundle\Entity\EventDateMember" mapped-by="reservation"/>
+        <one-to-one field="member" target-entity="Chekov\Bundle\EventBundle\Entity\EventDateMemberInterface" mapped-by="reservation"/>
 
-        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\EventDate" field="date" inversed-by="reservations">
+        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\EventDateInterface" field="date" inversed-by="reservations">
             <join-column name="event_date_id" on-delete="CASCADE"/>
         </many-to-one>
 
-        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\PlanItem" field="planItem" inversed-by="eventDateReservations">
+        <many-to-one target-entity="Chekov\Bundle\EventBundle\Entity\PlanItemInterface" field="planItem" inversed-by="eventDateReservations">
             <!-- should throw error when so cascading is disabled -->
             <join-column name="event_plan_item_id"/>
         </many-to-one>
@@ -23,5 +23,5 @@
         <many-to-one target-entity="Sulu\Bundle\ContactBundle\Entity\AccountInterface" field="account">
             <join-column name="account_id" on-delete="SET NULL"/>
         </many-to-one>
-    </entity>
+    </mapped-superclass>
 </doctrine-mapping>

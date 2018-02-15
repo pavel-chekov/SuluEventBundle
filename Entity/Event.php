@@ -1,14 +1,20 @@
 <?php
 
+/*
+ * This file is part of ChekovEventBundle package.
+ *
+ * (c) Chekov Bundles <https://github.com/pavel-chekov>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
-/**
- * Event
- */
-class Event
+class Event implements EventInterface
 {
     /**
      * @var integer
@@ -16,17 +22,17 @@ class Event
     private $id;
 
     /**
-     * @var Collection|EventTranslation[]
+     * @var Collection|EventTranslationInterface[]
      */
     private $translations;
 
     /**
-     * @var Collection|EventDate[]
+     * @var Collection|EventDateInterface[]
      */
     private $dates;
 
     /**
-     * @var Collection|EventPrice[]
+     * @var Collection|EventPriceInterface[]
      */
     private $prices;
 
@@ -40,113 +46,63 @@ class Event
         $this->prices = new ArrayCollection();
     }
 
-    /**
-     * Get id
-     *
-     * @return integer
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * Add translation
-     *
-     * @param EventTranslation $translation
-     *
-     * @return Event
-     */
-    public function addTranslation(EventTranslation $translation)
+    public function addTranslation(EventTranslationInterface $translation)
     {
         $this->translations[] = $translation;
 
         return $this;
     }
 
-    /**
-     * Remove translation
-     *
-     * @param EventTranslation $translation
-     */
-    public function removeTranslation(EventTranslation $translation)
+    public function removeTranslation(EventTranslationInterface $translation)
     {
         $this->translations->removeElement($translation);
+
+        return $this;
     }
 
-    /**
-     * Get translations
-     *
-     * @return Collection|EventTranslation[]
-     */
     public function getTranslations()
     {
         return $this->translations;
     }
 
-    /**
-     * Add date
-     *
-     * @param EventDate $date
-     *
-     * @return Event
-     */
-    public function addDate(EventDate $date)
+    public function addDate(EventDateInterface $date)
     {
         $this->dates[] = $date;
 
         return $this;
     }
 
-    /**
-     * Remove date
-     *
-     * @param EventDate $date
-     */
-    public function removeDate(EventDate $date)
+    public function removeDate(EventDateInterface $date)
     {
         $this->dates->removeElement($date);
+
+        return $this;
     }
 
-    /**
-     * Get dates
-     *
-     * @return Collection|EventDate[]
-     */
     public function getDates()
     {
         return $this->dates;
     }
 
-    /**
-     * Add price
-     *
-     * @param EventPrice $price
-     *
-     * @return Event
-     */
-    public function addPrice(EventPrice $price)
+    public function addPrice(EventPriceInterface $price)
     {
         $this->prices[] = $price;
 
         return $this;
     }
 
-    /**
-     * Remove price
-     *
-     * @param EventPrice $price
-     */
-    public function removePrice(EventPrice $price)
+    public function removePrice(EventPriceInterface $price)
     {
         $this->prices->removeElement($price);
+
+        return $this;
     }
 
-    /**
-     * Get prices
-     *
-     * @return Collection|EventPrice[]
-     */
     public function getPrices()
     {
         return $this->prices;

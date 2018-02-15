@@ -2,29 +2,29 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity repository-class="Chekov\Bundle\EventBundle\Repository\EventRepository"
+    <mapped-superclass repository-class="Chekov\Bundle\EventBundle\Repository\EventRepositoryInterface"
             name="Chekov\Bundle\EventBundle\Entity\Event"
             table="ev_event">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO"/>
         </id>
 
-        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventTranslation" mapped-by="event" field="translations">
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventTranslationInterface" mapped-by="event" field="translations">
             <cascade>
                 <cascade-persist />
             </cascade>
         </one-to-many>
 
-        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDate" mapped-by="event" field="dates">
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventDateInterface" mapped-by="event" field="dates">
             <cascade>
                 <cascade-persist />
             </cascade>
         </one-to-many>
 
-        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventPrice" mapped-by="event" field="prices">
+        <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventPriceInterface" mapped-by="event" field="prices">
             <cascade>
                 <cascade-persist />
             </cascade>
         </one-to-many>
-    </entity>
+    </mapped-superclass>
 </doctrine-mapping>
