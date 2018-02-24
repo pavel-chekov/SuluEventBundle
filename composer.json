@@ -4,6 +4,7 @@
     "type": "sulu-bundle",
     "require": {
         "sulu/sulu": "~1.5",
+        "chekov/extension-bundle": "@dev",
         "symfony/symfony": "^2.8.7 || ^3.0",
         "doctrine/orm": "^2.5.3",
         "php": "^5.5 || ^7.0"

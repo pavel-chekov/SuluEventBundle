@@ -11,7 +11,7 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Sulu\Bundle\ContactBundle\Entity\Account;
+use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
 
 interface EventDateReservationInterface
 {
@@ -73,16 +73,16 @@ interface EventDateReservationInterface
     /**
      * Set account
      *
-     * @param Account $account
+     * @param AccountInterface $account
      *
      * @return $this
      */
-    public function setAccount(Account $account = null);
+    public function setAccount(AccountInterface $account = null);
 
     /**
      * Get account
      *
-     * @return Account
+     * @return AccountInterface
      */
     public function getAccount();
 }

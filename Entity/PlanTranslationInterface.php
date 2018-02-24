@@ -11,63 +11,10 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-interface PlanTranslationInterface
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationInterface;
+
+interface PlanTranslationInterface extends TranslationInterface
 {
-    /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return $this
-     */
-    public function setTitle($title);
-
-    /**
-     * Get title
-     *
-     * @return string
-     */
-    public function getTitle();
-
-    /**
-     * Set locale
-     *
-     * @param string $locale
-     *
-     * @return $this
-     */
-    public function setLocale($locale);
-
-    /**
-     * Get locale
-     *
-     * @return string
-     */
-    public function getLocale();
-
-    /**
-     * Set content
-     *
-     * @param array $content
-     *
-     * @return $this
-     */
-    public function setContent($content);
-
-    /**
-     * Get content
-     *
-     * @return array
-     */
-    public function getContent();
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId();
-
     /**
      * Set plan
      *

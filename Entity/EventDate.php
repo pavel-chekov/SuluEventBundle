@@ -11,11 +11,14 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class EventDate implements EventDateInterface
 {
+    use TranslationableTrait;
+
     /**
      * @var \DateTime
      */
@@ -30,11 +33,6 @@ class EventDate implements EventDateInterface
      * @var integer
      */
     private $id;
-
-    /**
-     * @var Collection|EventDateTranslationInterface[]
-     */
-    private $translations;
 
     /**
      * @var Collection|EventDateMemberInterface[]
@@ -93,25 +91,6 @@ class EventDate implements EventDateInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    public function addTranslation(EventDateTranslationInterface $translation)
-    {
-        $this->translations[] = $translation;
-
-        return $this;
-    }
-
-    public function removeTranslation(EventDateTranslationInterface $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     public function addMember(EventDateMemberInterface $member)

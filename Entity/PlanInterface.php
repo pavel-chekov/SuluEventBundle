@@ -11,9 +11,10 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationableInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface PlanInterface
+interface PlanInterface extends TranslationableInterface
 {
     /**
      * Set scale
@@ -62,31 +63,6 @@ interface PlanInterface
      * @return Collection|EventDateInterface[]
      */
     public function getEventDates();
-
-    /**
-     * Add translation
-     *
-     * @param PlanTranslationInterface $translation
-     *
-     * @return $this
-     */
-    public function addTranslation(PlanTranslationInterface $translation);
-
-    /**
-     * Remove translation
-     *
-     * @param PlanTranslationInterface $translation
-     *
-     * @return $this
-     */
-    public function removeTranslation(PlanTranslationInterface $translation);
-
-    /**
-     * Get translations
-     *
-     * @return Collection|EventTranslationInterface[]
-     */
-    public function getTranslations();
 
     /**
      * Add item

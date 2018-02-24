@@ -11,8 +11,8 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Sulu\Bundle\ContactBundle\Entity\Account;
-use Sulu\Bundle\ContactBundle\Entity\Contact;
+use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
+use Sulu\Component\Contact\Model\ContactInterface;
 
 interface EventDateMemberInterface
 {
@@ -106,32 +106,32 @@ interface EventDateMemberInterface
     /**
      * Set contact
      *
-     * @param Contact $contact
+     * @param ContactInterface $contact
      *
      * @return $this
      */
-    public function setContact(Contact $contact = null);
+    public function setContact(ContactInterface $contact = null);
 
     /**
      * Get contact
      *
-     * @return Contact
+     * @return ContactInterface
      */
     public function getContact();
 
     /**
      * Set account
      *
-     * @param Account $account
+     * @param AccountInterface $account
      *
      * @return $this
      */
-    public function setAccount(Account $account = null);
+    public function setAccount(AccountInterface $account = null);
 
     /**
      * Get account
      *
-     * @return Account
+     * @return AccountInterface
      */
     public function getAccount();
 }

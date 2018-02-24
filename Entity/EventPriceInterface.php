@@ -11,10 +11,17 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Doctrine\Common\Collections\Collection;
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationableInterface;
 
-interface EventPriceInterface
+interface EventPriceInterface extends TranslationableInterface
 {
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId();
+
     /**
      * Set value
      *
@@ -46,38 +53,6 @@ interface EventPriceInterface
      * @return string
      */
     public function getType();
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId();
-
-    /**
-     * Add translation
-     *
-     * @param EventPriceTranslationInterface $translation
-     *
-     * @return EventPriceInterface
-     */
-    public function addTranslation(EventPriceTranslationInterface $translation);
-
-    /**
-     * Remove translation
-     *
-     * @param EventPriceTranslationInterface $translation
-     *
-     * @return $this
-     */
-    public function removeTranslation(EventPriceTranslationInterface $translation);
-
-    /**
-     * Get translations
-     *
-     * @return Collection|EventPriceTranslationInterface[]
-     */
-    public function getTranslations();
 
     /**
      * Set event

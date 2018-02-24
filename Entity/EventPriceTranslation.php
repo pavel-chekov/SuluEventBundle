@@ -11,73 +11,16 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationTrait;
+
 class EventPriceTranslation implements EventPriceTranslationInterface
 {
-    /**
-     * @var string
-     */
-    private $title;
-
-    /**
-     * @var string
-     */
-    private $locale;
-
-    /**
-     * @var array
-     */
-    private $content;
-
-    /**
-     * @var integer
-     */
-    private $id;
+    use TranslationTrait;
 
     /**
      * @var EventPriceInterface
      */
     private $price;
-
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function setLocale($locale)
-    {
-        $this->locale = $locale;
-
-        return $this;
-    }
-
-    public function getLocale()
-    {
-        return $this->locale;
-    }
-
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    public function getId()
-    {
-        return $this->id;
-    }
 
     public function setPrice(EventPriceInterface $price)
     {

@@ -11,8 +11,8 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Sulu\Bundle\ContactBundle\Entity\Account;
-use Sulu\Bundle\ContactBundle\Entity\Contact;
+use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
+use Sulu\Component\Contact\Model\ContactInterface;
 
 class EventDateMember implements EventDateMemberInterface
 {
@@ -47,12 +47,12 @@ class EventDateMember implements EventDateMemberInterface
     private $price;
 
     /**
-     * @var Contact
+     * @var ContactInterface
      */
     private $contact;
 
     /**
-     * @var Account
+     * @var AccountInterface
      */
     private $account;
 
@@ -121,7 +121,7 @@ class EventDateMember implements EventDateMemberInterface
         return $this->price;
     }
 
-    public function setContact(Contact $contact = null)
+    public function setContact(ContactInterface $contact = null)
     {
         $this->contact = $contact;
 
@@ -133,7 +133,7 @@ class EventDateMember implements EventDateMemberInterface
         return $this->contact;
     }
 
-    public function setAccount(Account $account = null)
+    public function setAccount(AccountInterface $account = null)
     {
         $this->account = $account;
 

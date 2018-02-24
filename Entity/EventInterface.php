@@ -11,9 +11,10 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationableInterface;
 use Doctrine\Common\Collections\Collection;
 
-interface EventInterface
+interface EventInterface extends TranslationableInterface
 {
     /**
      * Get id
@@ -21,31 +22,6 @@ interface EventInterface
      * @return integer
      */
     public function getId();
-
-    /**
-     * Add translation
-     *
-     * @param EventTranslationInterface $translation
-     *
-     * @return $this
-     */
-    public function addTranslation(EventTranslationInterface $translation);
-
-    /**
-     * Remove translation
-     *
-     * @param EventTranslationInterface $translation
-     *
-     * @return $this
-     */
-    public function removeTranslation(EventTranslationInterface $translation);
-
-    /**
-     * Get translations
-     *
-     * @return Collection|EventTranslationInterface[]
-     */
-    public function getTranslations();
 
     /**
      * Add date

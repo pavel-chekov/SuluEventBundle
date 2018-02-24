@@ -11,7 +11,7 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Sulu\Bundle\ContactBundle\Entity\Account;
+use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
 
 class EventDateReservation implements EventDateReservationInterface
 {
@@ -36,7 +36,7 @@ class EventDateReservation implements EventDateReservationInterface
     private $planItem;
 
     /**
-     * @var Account
+     * @var AccountInterface
      */
     private $account;
 
@@ -81,7 +81,7 @@ class EventDateReservation implements EventDateReservationInterface
         return $this->planItem;
     }
 
-    public function setAccount(Account $account = null)
+    public function setAccount(AccountInterface $account = null)
     {
         $this->account = $account;
 

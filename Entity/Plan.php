@@ -11,11 +11,14 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class Plan implements PlanInterface
 {
+    use TranslationableTrait;
+
     /**
      * @var float
      */
@@ -30,11 +33,6 @@ class Plan implements PlanInterface
      * @var Collection|EventDateInterface[]
      */
     private $eventDates;
-
-    /**
-     * @var Collection|EventTranslationInterface[]
-     */
-    private $translations;
 
     /**
      * @var Collection|PlanItemInterface[]
@@ -85,25 +83,6 @@ class Plan implements PlanInterface
     public function getEventDates()
     {
         return $this->eventDates;
-    }
-
-    public function addTranslation(PlanTranslationInterface $translation)
-    {
-        $this->translations[] = $translation;
-
-        return $this;
-    }
-
-    public function removeTranslation(PlanTranslationInterface $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     public function addItem(PlanItemInterface $item)

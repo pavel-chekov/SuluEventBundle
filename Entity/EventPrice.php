@@ -11,11 +11,13 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 
 class EventPrice implements EventPriceInterface
 {
+    use TranslationableTrait;
+
     /**
      * @var float
      */
@@ -30,11 +32,6 @@ class EventPrice implements EventPriceInterface
      * @var integer
      */
     private $id;
-
-    /**
-     * @var Collection|EventPriceTranslationInterface[]
-     */
-    private $translations;
 
     /**
      * @var EventInterface
@@ -76,25 +73,6 @@ class EventPrice implements EventPriceInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    public function addTranslation(EventPriceTranslationInterface $translation)
-    {
-        $this->translations[] = $translation;
-
-        return $this;
-    }
-
-    public function removeTranslation(EventPriceTranslationInterface $translation)
-    {
-        $this->translations->removeElement($translation);
-
-        return $this;
-    }
-
-    public function getTranslations()
-    {
-        return $this->translations;
     }
 
     public function setEvent(EventInterface $event)
