@@ -11,10 +11,11 @@
 
 namespace Chekov\Bundle\EventBundle\Repository;
 
+use Chekov\Bundle\ExtensionBundle\Repository\ExtensionRepositoryInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Doctrine\Common\Collections\Selectable;
 use Sulu\Component\Persistence\Repository\RepositoryInterface;
 
-interface EventRepositoryInterface extends ObjectRepository, Selectable, RepositoryInterface
+interface EventRepositoryInterface extends ObjectRepository, Selectable, RepositoryInterface, ExtensionRepositoryInterface
 {
 }

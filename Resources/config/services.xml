@@ -12,5 +12,17 @@
             <argument type="service" id="sulu_security.security_checker"/>
             <argument>%sulu_admin.name%</argument>
         </service>
+
+        <!-- Api -->
+        <service id="chekov_event.api.event"
+                 class="Chekov\Bundle\ExtensionBundle\Controller\EntityController">
+            <argument type="service" id="sulu.repository.event"/>
+            <argument type="service" id="chekov_event.serializer.event"/>
+            <argument type="service" id="fos_rest.view_handler"/>
+            <argument>event</argument>
+        </service>
+
+        <!-- Serializer -->
+        <service id="chekov_event.serializer.event" class="Chekov\Bundle\ExtensionBundle\Serializer\Serializer"/>
     </services>
 </container>

@@ -11,8 +11,10 @@
 
 namespace Chekov\Bundle\EventBundle\Repository;
 
+use Chekov\Bundle\ExtensionBundle\Repository\ExtensionRepositoryTrait;
 use Sulu\Component\Persistence\Repository\ORM\EntityRepository;
 
 class EventRepository extends EntityRepository implements EventRepositoryInterface
 {
+    use ExtensionRepositoryTrait;
 }
