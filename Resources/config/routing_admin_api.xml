@@ -4,5 +4,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://friendsofsymfony.github.com/schema/rest https://raw.github.com/FriendsOfSymfony/FOSRestBundle/master/Resources/config/schema/routing/rest_routing-1.0.xsd">
 
-    <import type="rest" resource="chekov_event.api.event" name-prefix="chekov_event." id="chekov_event.event" prefix="events"/>
+    <import type="rest" resource="chekov_event.api.event" name-prefix="chekov_event.events." id="chekov_event.event" prefix="events"/>
+    <import type="rest" resource="chekov_event.api.plan" name-prefix="chekov_event.plans." id="chekov_event.plan" prefix="plans"/>
 </routes>

@@ -3,11 +3,13 @@
     "description": "A sulu bundle which provides event and event registration.",
     "type": "sulu-bundle",
     "require": {
-        "sulu/sulu": "~1.5",
+        "sulu/sulu": "^2.0",
         "chekov/extension-bundle": "@dev",
-        "symfony/symfony": "^2.8.7 || ^3.0",
+        "symfony/config": "^3.4",
+        "symfony/dependency-injection": "^3.4",
+        "symfony/http-kernel": "^3.4",
         "doctrine/orm": "^2.5.3",
-        "php": "^5.5 || ^7.0"
+        "php": "^7.1"
     },
     "require-dev": {
         "jackalope/jackalope-doctrine-dbal": "^1.2.5",
@@ -30,7 +32,13 @@
     "authors": [
         {
             "name": "Alexander Schranz",
-            "email": "alexander.schranz@massiveart.com"
+            "homepage": "https://github.com/alexander-schranz"
         }
-    ]
+    ],
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
 }
