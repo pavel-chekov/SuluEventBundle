@@ -11,22 +11,29 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationTrait;
+use Chekov\Bundle\ModelBundle\Model\ContentTrait;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslationTrait;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventPriceTranslation implements EventPriceTranslationInterface
 {
+    use AuditableTrait;
+    use ContentTrait;
     use TranslationTrait;
+    use UuidTrait;
 
     /**
      * @var EventPriceInterface
      */
     private $price;
 
-    public function setPrice(EventPriceInterface $price)
+    public function __construct(EventPriceInterface $price, Localization $localization)
     {
+        $this->initializeUuid();
+        $this->localization = $localization;
         $this->price = $price;
-
-        return $this;
     }
 
     public function getPrice()

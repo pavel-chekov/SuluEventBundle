@@ -11,9 +11,10 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableInterface;
+use Chekov\Bundle\ModelBundle\Model\TranslateableInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventPriceInterface extends TranslationableInterface
+interface EventPriceInterface extends AuditableInterface, TranslateableInterface
 {
     /**
      * Get id

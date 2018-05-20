@@ -11,14 +11,14 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
 use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventDateReservation implements EventDateReservationInterface
 {
-    /**
-     * @var integer
-     */
-    private $id;
+    use AuditableTrait;
+    use UuidTrait;
 
     /**
      * @var EventDateMemberInterface
@@ -40,9 +40,12 @@ class EventDateReservation implements EventDateReservationInterface
      */
     private $account;
 
-    public function getId()
+    /**
+     * Constructor
+     */
+    public function __construct()
     {
-        return $this->id;
+        $this->initializeUuid();
     }
 
     public function setMember(EventDateMemberInterface $member = null)

@@ -2,12 +2,10 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <mapped-superclass repository-class="Chekov\Bundle\EventBundle\Repository\EventDateReservationRepositoryInterface"
+    <entity repository-class="Chekov\Bundle\EventBundle\Repository\EventDateReservationRepositoryInterface"
             name="Chekov\Bundle\EventBundle\Entity\EventDateReservation"
             table="ev_event_date_reservation">
-        <id name="id" type="integer" column="id">
-            <generator strategy="AUTO"/>
-        </id>
+        <embedded name="uuid" class="Chekov\Bundle\ModelBundle\Model\Uuid" use-column-prefix="false"/>
 
         <one-to-one field="member" target-entity="Chekov\Bundle\EventBundle\Entity\EventDateMemberInterface" mapped-by="reservation"/>
 
@@ -23,5 +21,5 @@
         <many-to-one target-entity="Sulu\Bundle\ContactBundle\Entity\AccountInterface" field="account">
             <join-column name="account_id" on-delete="SET NULL"/>
         </many-to-one>
-    </mapped-superclass>
+    </entity>
 </doctrine-mapping>

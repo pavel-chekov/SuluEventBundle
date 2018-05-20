@@ -11,18 +11,16 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\ContentInterface;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventDateTranslationInterface extends TranslationInterface
+interface EventDateTranslationInterface extends AuditableInterface, ContentInterface, TranslationInterface
 {
     /**
-     * Set date
-     *
-     * @param EventDateInterface $date
-     *
-     * @return $this
+     * @return string
      */
-    public function setDate(EventDateInterface $date);
+    public function getId();
 
     /**
      * Get date

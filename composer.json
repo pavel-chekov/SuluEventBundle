@@ -5,6 +5,7 @@
     "require": {
         "sulu/sulu": "^2.0",
         "chekov/extension-bundle": "@dev",
+        "chekov/model-bundle": "@dev",
         "symfony/config": "^3.4",
         "symfony/dependency-injection": "^3.4",
         "symfony/http-kernel": "^3.4",

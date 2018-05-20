@@ -11,13 +11,19 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslateableTrait;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventDate implements EventDateInterface
 {
-    use TranslationableTrait;
+    use AuditableTrait;
+    use TranslateableTrait;
+    use UuidTrait;
 
     /**
      * @var \DateTime
@@ -28,11 +34,6 @@ class EventDate implements EventDateInterface
      * @var \DateTime
      */
     private $end;
-
-    /**
-     * @var integer
-     */
-    private $id;
 
     /**
      * @var Collection|EventDateMemberInterface[]
@@ -59,7 +60,8 @@ class EventDate implements EventDateInterface
      */
     public function __construct()
     {
-        $this->translations = new ArrayCollection();
+        $this->initializeUuid();
+        $this->initializeTranslations();
         $this->members = new ArrayCollection();
         $this->reservations = new ArrayCollection();
     }
@@ -86,11 +88,6 @@ class EventDate implements EventDateInterface
     public function getEnd()
     {
         return $this->end;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function addMember(EventDateMemberInterface $member)
@@ -153,5 +150,13 @@ class EventDate implements EventDateInterface
     public function getEvent()
     {
         return $this->event;
+    }
+
+    protected function createTranslation(Localization $localization): TranslationInterface
+    {
+        $translation = new EventDateTranslation($this, $localization);
+        $this->translations->add($translation);
+
+        return $translation;
     }
 }

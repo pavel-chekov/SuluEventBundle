@@ -11,12 +11,17 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
-use Doctrine\Common\Collections\ArrayCollection;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslateableTrait;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventPrice implements EventPriceInterface
 {
-    use TranslationableTrait;
+    use AuditableTrait;
+    use TranslateableTrait;
+    use UuidTrait;
 
     /**
      * @var float
@@ -29,11 +34,6 @@ class EventPrice implements EventPriceInterface
     private $type;
 
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var EventInterface
      */
     private $event;
@@ -43,7 +43,8 @@ class EventPrice implements EventPriceInterface
      */
     public function __construct()
     {
-        $this->translations = new ArrayCollection();
+        $this->initializeUuid();
+        $this->initializeTranslations();
     }
 
     public function setValue($value)
@@ -70,11 +71,6 @@ class EventPrice implements EventPriceInterface
         return $this->type;
     }
 
-    public function getId()
-    {
-        return $this->id;
-    }
-
     public function setEvent(EventInterface $event)
     {
         $this->event = $event;
@@ -85,5 +81,13 @@ class EventPrice implements EventPriceInterface
     public function getEvent()
     {
         return $this->event;
+    }
+
+    protected function createTranslation(Localization $localization): TranslationInterface
+    {
+        $translation = new EventPriceTranslation($this, $localization);
+        $this->translations->add($translation);
+
+        return $translation;
     }
 }

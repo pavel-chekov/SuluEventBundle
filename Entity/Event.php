@@ -11,18 +11,19 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslateableTrait;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class Event implements EventInterface
 {
-    use TranslationableTrait;
-
-    /**
-     * @var integer
-     */
-    private $id;
+    use AuditableTrait;
+    use UuidTrait;
+    use TranslateableTrait;
 
     /**
      * @var Collection|EventDateInterface[]
@@ -39,14 +40,10 @@ class Event implements EventInterface
      */
     public function __construct()
     {
-        $this->translations = new ArrayCollection();
+        $this->initializeUuid();
+        $this->initializeTranslations();
         $this->dates = new ArrayCollection();
         $this->prices = new ArrayCollection();
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function addDate(EventDateInterface $date)
@@ -85,5 +82,13 @@ class Event implements EventInterface
     public function getPrices()
     {
         return $this->prices;
+    }
+
+    protected function createTranslation(Localization $localization): TranslationInterface
+    {
+        $translation = new EventTranslation($this, $localization);
+        $this->translations->add($translation);
+
+        return $translation;
     }
 }

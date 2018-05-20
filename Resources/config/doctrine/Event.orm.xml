@@ -2,12 +2,10 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <mapped-superclass repository-class="Chekov\Bundle\EventBundle\Repository\EventRepositoryInterface"
+    <entity repository-class="Chekov\Bundle\EventBundle\Repository\EventRepositoryInterface"
             name="Chekov\Bundle\EventBundle\Entity\Event"
             table="ev_event">
-        <id name="id" type="integer" column="id">
-            <generator strategy="AUTO"/>
-        </id>
+        <embedded name="uuid" class="Chekov\Bundle\ModelBundle\Model\Uuid" use-column-prefix="false"/>
 
         <one-to-many target-entity="Chekov\Bundle\EventBundle\Entity\EventTranslationInterface" mapped-by="event" field="translations">
             <cascade>
@@ -26,5 +24,5 @@
                 <cascade-persist />
             </cascade>
         </one-to-many>
-    </mapped-superclass>
+    </entity>
 </doctrine-mapping>

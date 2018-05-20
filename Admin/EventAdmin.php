@@ -11,63 +11,86 @@
 
 namespace Chekov\Bundle\EventBundle\Admin;
 
+use Chekov\Bundle\ModelBundle\Admin\Routing\RouteTrait;
 use Sulu\Bundle\AdminBundle\Admin\Admin;
 use Sulu\Bundle\AdminBundle\Navigation\Navigation;
 use Sulu\Bundle\AdminBundle\Navigation\NavigationItem;
+use Sulu\Component\Localization\Localization;
+use Sulu\Component\Security\Authorization\PermissionTypes;
 use Sulu\Component\Security\Authorization\SecurityCheckerInterface;
+use Sulu\Component\Webspace\Manager\WebspaceManagerInterface;
 
 class EventAdmin extends Admin
 {
-    const SECURITY_EVENTS = 'chekov.event.events';
-    const SECURITY_PLANS = 'chekov.event.plans';
+    use RouteTrait;
+
+    const SECURITY_CONTEXT_EVENT = 'chekov.event.events';
+    const SECURITY_CONTEXT_PLAN = 'chekov.event.plans';
+
+    /**
+     * @var SecurityCheckerInterface
+     */
+    private $securityChecker;
+
+    /**
+     * @var WebspaceManagerInterface
+     */
+    private $webspaceManager;
 
     /**
      * FormAdmin constructor.
      *
      * @param SecurityCheckerInterface $securityChecker
+     * @param WebspaceManagerInterface $webspaceManager,
      * @param string $title
      */
     public function __construct(
         SecurityCheckerInterface $securityChecker,
+        WebspaceManagerInterface $webspaceManager,
         $title
     ) {
+        $this->securityChecker = $securityChecker;
+        $this->webspaceManager = $webspaceManager;
+
         // set root navigation
         $rootNavigationItem = new NavigationItem($title);
+    }
 
-        // parent navigation
-        $section = new NavigationItem('navigation.modules');
+    public function getNavigationV2(): Navigation
+    {
+        $rootNavigationItem = $this->getNavigationItemRoot();
 
-        // event navigation
-        $events = new NavigationItem('navigation.events');
-        $events->setPosition(10);
-        $events->setIcon('calendar');
+        $module = new NavigationItem('app.events');
+        $module->setPosition(40);
+        $module->setIcon('su-calendar');
 
-        // create event navigation
-        if ($securityChecker->hasPermission(self::SECURITY_EVENTS, 'view')) {
-            $navigationItem = new NavigationItem('chekov_event.events');
-            $navigationItem->setAction('events');
-            $navigationItem->setPosition(10);
-            $events->addChild($navigationItem);
-            $rootNavigationItem->addChild($section);
+        if ($this->securityChecker->hasPermission(self::SECURITY_CONTEXT_EVENT, PermissionTypes::VIEW)) {
+            $events = new NavigationItem('app.events');
+            $events->setPosition(10);
+            $events->setMainRoute('app_events.datagrid');
+
+            $module->addChild($events);
         }
 
-        // create plan navigation
-        if ($securityChecker->hasPermission(self::SECURITY_PLANS, 'view')) {
-            $navigationItem = new NavigationItem('chekov_event.plans');
-            $navigationItem->setAction('plans');
-            $navigationItem->setPosition(20);
-            $events->addChild($navigationItem);
-            $rootNavigationItem->addChild($section);
-        }
+        return new Navigation($rootNavigationItem);
+    }
 
-        // add event
-        if ($events->hasChildren()) {
-            $rootNavigationItem->addChild($section);
-            $section->addChild($events);
-        }
+    public function getRoutes(): array
+    {
+        // FIXME remove as soon as https://github.com/sulu/sulu/issues/3922 is fixed
+        $locales = array_values(
+            array_map(
+                function (Localization $localization) {
+                    return $localization->getLocale();
+                },
+                $this->webspaceManager->getAllLocalizations()
+            )
+        );
 
-        // set navigation
-        $this->setNavigation(new Navigation($rootNavigationItem));
+        return array_merge(
+            $this->createBasicRoutes($locales, 'events', '/events'),
+            $this->createBasicRoutes($locales, 'plans', '/plans')
+        );
     }
 
     public function getCommands()
@@ -85,8 +108,8 @@ class EventAdmin extends Admin
         return [
             'Sulu' => [
                 'Event' => [
-                    self::SECURITY_EVENTS,
-                    self::SECURITY_PLANS,
+                    self::SECURITY_CONTEXT_EVENT,
+                    self::SECURITY_CONTEXT_PLAN,
                 ],
             ],
         ];

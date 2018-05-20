@@ -12,8 +12,9 @@
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Doctrine\Common\Collections\Collection;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface PlanItemInterface
+interface PlanItemInterface extends AuditableInterface
 {
     /**
      * Set name
@@ -82,7 +83,7 @@ interface PlanItemInterface
     /**
      * Get id
      *
-     * @return integer
+     * @return string
      */
     public function getId();
 

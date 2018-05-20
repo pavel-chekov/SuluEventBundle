@@ -11,23 +11,24 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableTrait;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslateableTrait;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class Plan implements PlanInterface
 {
-    use TranslationableTrait;
+    use AuditableTrait;
+    use TranslateableTrait;
+    use UuidTrait;
 
     /**
      * @var float
      */
     private $scale;
-
-    /**
-     * @var integer
-     */
-    private $id;
 
     /**
      * @var Collection|EventDateInterface[]
@@ -44,8 +45,9 @@ class Plan implements PlanInterface
      */
     public function __construct()
     {
+        $this->initializeUuid();
+        $this->initializeTranslations();
         $this->eventDates = new ArrayCollection();
-        $this->translations = new ArrayCollection();
         $this->items = new ArrayCollection();
     }
 
@@ -59,11 +61,6 @@ class Plan implements PlanInterface
     public function getScale()
     {
         return $this->scale;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function addEventDate(EventDateInterface $eventDate)
@@ -102,5 +99,13 @@ class Plan implements PlanInterface
     public function getItems()
     {
         return $this->items;
+    }
+
+    protected function createTranslation(Localization $localization): TranslationInterface
+    {
+        $translation = new PlanTranslation($this, $localization);
+        $this->translations->add($translation);
+
+        return $translation;
     }
 }

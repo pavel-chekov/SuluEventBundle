@@ -11,22 +11,33 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationTrait;
+
+use Chekov\Bundle\ModelBundle\Model\ContentTrait;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslationTrait;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventTranslation implements EventTranslationInterface
 {
+    use AuditableTrait;
+    use ContentTrait;
     use TranslationTrait;
+    use UuidTrait;
 
     /**
      * @var EventInterface
      */
     private $event;
 
-    public function setEvent(EventInterface $event)
+    /**
+     * Constructor
+     */
+    public function __construct(EventInterface $event, Localization $localization)
     {
+        $this->initializeUuid();
+        $this->localization = $localization;
         $this->event = $event;
-
-        return $this;
     }
 
     public function getEvent()

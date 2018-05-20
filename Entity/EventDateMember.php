@@ -11,11 +11,16 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
 use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
-use Sulu\Component\Contact\Model\ContactInterface;
+use Sulu\Bundle\ContactBundle\Entity\ContactInterface;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventDateMember implements EventDateMemberInterface
 {
+    use AuditableTrait;
+    use UuidTrait;
+
     /**
      * @var boolean
      */
@@ -25,11 +30,6 @@ class EventDateMember implements EventDateMemberInterface
      * @var boolean
      */
     private $participate;
-
-    /**
-     * @var integer
-     */
-    private $id;
 
     /**
      * @var EventDateReservationInterface
@@ -56,6 +56,14 @@ class EventDateMember implements EventDateMemberInterface
      */
     private $account;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->initializeUuid();
+    }
+
     public function setPaid($paid)
     {
         $this->paid = $paid;
@@ -78,11 +86,6 @@ class EventDateMember implements EventDateMemberInterface
     public function getParticipate()
     {
         return $this->participate;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function setReservation(EventDateReservationInterface $reservation = null)

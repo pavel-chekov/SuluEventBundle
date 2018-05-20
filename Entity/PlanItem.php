@@ -11,11 +11,16 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class PlanItem implements PlanItemInterface
 {
+    use AuditableTrait;
+    use UuidTrait;
+
     /**
      * @var string
      */
@@ -37,11 +42,6 @@ class PlanItem implements PlanItemInterface
     private $type;
 
     /**
-     * @var integer
-     */
-    private $id;
-
-    /**
      * @var Collection|EventDateReservationInterface[]
      */
     private $eventDateReservations;
@@ -56,6 +56,7 @@ class PlanItem implements PlanItemInterface
      */
     public function __construct()
     {
+        $this->initializeUuid();
         $this->eventDateReservations = new ArrayCollection();
     }
 
@@ -105,11 +106,6 @@ class PlanItem implements PlanItemInterface
     public function getType()
     {
         return $this->type;
-    }
-
-    public function getId()
-    {
-        return $this->id;
     }
 
     public function addEventDateReservation(EventDateReservationInterface $eventDateReservation)

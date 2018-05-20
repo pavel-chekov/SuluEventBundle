@@ -11,10 +11,11 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableInterface;
 use Doctrine\Common\Collections\Collection;
+use Chekov\Bundle\ModelBundle\Model\TranslateableInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventDateInterface extends TranslationableInterface
+interface EventDateInterface extends AuditableInterface, TranslateableInterface
 {
     /**
      * Set start

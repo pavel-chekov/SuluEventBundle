@@ -11,22 +11,29 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationTrait;
+use Chekov\Bundle\ModelBundle\Model\ContentTrait;
+use Chekov\Bundle\ModelBundle\Model\Localization;
+use Chekov\Bundle\ModelBundle\Model\TranslationTrait;
+use Chekov\Bundle\ModelBundle\Model\UuidTrait;
+use Sulu\Component\Persistence\Model\AuditableTrait;
 
 class EventDateTranslation implements EventDateTranslationInterface
 {
+    use AuditableTrait;
+    use ContentTrait;
     use TranslationTrait;
+    use UuidTrait;
 
     /**
      * @var EventDateInterface
      */
     private $date;
 
-    public function setDate(EventDateInterface $date)
+    public function __construct(EventDateInterface $date, Localization $localization)
     {
+        $this->initializeUuid();
+        $this->localization = $localization;
         $this->date = $date;
-
-        return $this;
     }
 
     public function getDate()

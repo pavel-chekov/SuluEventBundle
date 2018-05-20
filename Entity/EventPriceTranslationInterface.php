@@ -11,18 +11,16 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\ContentInterface;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventPriceTranslationInterface extends TranslationInterface
+interface EventPriceTranslationInterface extends AuditableInterface, ContentInterface, TranslationInterface
 {
     /**
-     * Set price
-     *
-     * @param EventPriceInterface $price
-     *
-     * @return $this
+     * @return string
      */
-    public function setPrice(EventPriceInterface $price);
+    public function getId();
 
     /**
      * Get price

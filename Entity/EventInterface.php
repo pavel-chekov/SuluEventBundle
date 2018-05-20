@@ -11,10 +11,11 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationableInterface;
+use Chekov\Bundle\ModelBundle\Model\TranslateableInterface;
 use Doctrine\Common\Collections\Collection;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventInterface extends TranslationableInterface
+interface EventInterface extends AuditableInterface, TranslateableInterface
 {
     /**
      * Get id

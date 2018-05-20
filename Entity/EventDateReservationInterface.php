@@ -12,8 +12,9 @@
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventDateReservationInterface
+interface EventDateReservationInterface extends AuditableInterface
 {
     /**
      * Get id

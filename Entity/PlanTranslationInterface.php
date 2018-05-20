@@ -11,18 +11,16 @@
 
 namespace Chekov\Bundle\EventBundle\Entity;
 
-use Chekov\Bundle\ExtensionBundle\Entity\TranslationInterface;
+use Chekov\Bundle\ModelBundle\Model\ContentInterface;
+use Chekov\Bundle\ModelBundle\Model\TranslationInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface PlanTranslationInterface extends TranslationInterface
+interface PlanTranslationInterface extends AuditableInterface, ContentInterface, TranslationInterface
 {
     /**
-     * Set plan
-     *
-     * @param PlanInterface $plan
-     *
-     * @return $this
+     * @return string
      */
-    public function setPlan(PlanInterface $plan);
+    public function getId();
 
     /**
      * Get plan

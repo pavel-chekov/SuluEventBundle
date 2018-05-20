@@ -12,9 +12,10 @@
 namespace Chekov\Bundle\EventBundle\Entity;
 
 use Sulu\Bundle\ContactBundle\Entity\AccountInterface;
-use Sulu\Component\Contact\Model\ContactInterface;
+use Sulu\Bundle\ContactBundle\Entity\ContactInterface;
+use Sulu\Component\Persistence\Model\AuditableInterface;
 
-interface EventDateMemberInterface
+interface EventDateMemberInterface extends AuditableInterface
 {
     /**
      * Set paid
