@@ -53,7 +53,7 @@ class EventAdmin extends Admin
         $this->webspaceManager = $webspaceManager;
 
         // set root navigation
-        $rootNavigationItem = new NavigationItem($title);
+        $this->setNavigation(new Navigation(new NavigationItem($title)));
     }
 
     public function getNavigationV2(): Navigation
@@ -64,13 +64,17 @@ class EventAdmin extends Admin
         $module->setPosition(40);
         $module->setIcon('su-calendar');
 
+        $bundleName = $this->getJsBundleName();
+
         if ($this->securityChecker->hasPermission(self::SECURITY_CONTEXT_EVENT, PermissionTypes::VIEW)) {
-            $events = new NavigationItem('app.events');
+            $events = new NavigationItem(sprintf('%s.events', $bundleName));
             $events->setPosition(10);
-            $events->setMainRoute('app_events.datagrid');
+            $events->setMainRoute(sprintf('%s_events.datagrid', $bundleName));
 
             $module->addChild($events);
         }
+
+        $rootNavigationItem->addChild($module);
 
         return new Navigation($rootNavigationItem);
     }

@@ -23,7 +23,7 @@ define(['css!chekoveventcss/main'], function() {
             'use strict';
             var sandbox = app.sandbox;
 
-            app.components.addSource('chekovform', '/bundles/chekovform/js/components');
+            app.components.addSource('chekovevent', '/bundles/chekovform/js/components');
         }
     }
 });
